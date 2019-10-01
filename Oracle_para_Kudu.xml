@@ -135,7 +135,7 @@
             <properties>
                 <entry>
                     <key>Database Connection URL</key>
-                    <value>jdbc:oracle:thin:@db-dev.spcdc.br:1521/DEV_JAVA_SPCPTRAN_SERV</value>
+                    <value>jdbc:oracle:thin:@seuhostname:1521/servico
                 </entry>
                 <entry>
                     <key>Database Driver Class Name</key>
@@ -150,10 +150,10 @@
                 </entry>
                 <entry>
                     <key>Database User</key>
-                    <value>RWZ_INGESTAO</value>
+                    <value>seuuser</value>
                 </entry>
                 <entry>
-                    <key>Password</key>
+                    <key>suasenha</key>
                 </entry>
                 <entry>
                     <key>Max Wait Time</key>
@@ -226,7 +226,7 @@
                 </entry>
                 <entry>
                     <key>Kerberos Principal</key>
-                    <value>nifi_user/sp-vmw-hdp-dev-01.spcdc.br@SPCDEV.INFRA</value>
+                    <value>nifi_user/hostdokerberos@SPCDEV.INFRA</value>
                 </entry>
             </properties>
             <state>ENABLED</state>
@@ -731,11 +731,11 @@
                         <properties>
                             <entry>
 <key>Kudu Masters</key>
-<value>sp-vmw-hdp-dev-04.spcdc.br</value>
+<value>Hostdokudumastes</value>
                             </entry>
                             <entry>
 <key>Table Name</key>
-<value>impala::raw.spcjava_etr_tip_ass_10</value>
+<value>impala::database.tabela</value>
                             </entry>
                             <entry>
 <key>kerberos-credentials-service</key>
