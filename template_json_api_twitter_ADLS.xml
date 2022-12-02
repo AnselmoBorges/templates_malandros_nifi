@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.3">
+    <description>Pega o Json do API do Twitter, quebra em arquivos únicos JSON e joga numa pasta no Storage Account Azure (ADLS)</description>
+    <groupId>bbcb9b99-0184-1000-b1eb-3e32827a8acc</groupId>
+    <name>JSON Twitter para Azure Storage Account</name>
+    <snippet>
+        <controllerServices>
+            <id>4fb1a18f-ecdd-3474-0000-000000000000</id>
+            <parentGroupId>52217c7e-3f95-3ebb-0000-000000000000</parentGroupId>
+            <versionedComponentId>4fb1a18f-ecdd-3474-a0d0-216a9a6b827a</versionedComponentId>
+            <bulletinLevel>WARN</bulletinLevel>
+            <bundle>
+                <artifact>nifi-azure-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.18.0</version>
+            </bundle>
+            <comments></comments>
+            <descriptors>
+                <entry>
+                    <key>storage-account-name</key>
+                    <value>
+                        <name>storage-account-name</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>storage-endpoint-suffix</key>
+                    <value>
+                        <name>storage-endpoint-suffix</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>storage-account-key</key>
+                    <value>
+                        <name>storage-account-key</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>storage-sas-token</key>
+                    <value>
+                        <name>storage-sas-token</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>storage-use-managed-identity</key>
+                    <value>
+                        <name>storage-use-managed-identity</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>managed-identity-client-id</key>
+                    <value>
+                        <name>managed-identity-client-id</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>service-principal-tenant-id</key>
+                    <value>
+                        <name>service-principal-tenant-id</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>service-principal-client-id</key>
+                    <value>
+                        <name>service-principal-client-id</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>service-principal-client-secret</key>
+                    <value>
+                        <name>service-principal-client-secret</name>
+                    </value>
+                </entry>
+            </descriptors>
+            <name>ADLSCredentialsControllerService</name>
+            <persistsState>false</persistsState>
+            <properties>
+                <entry>
+                    <key>storage-account-name</key>
+                </entry>
+                <entry>
+                    <key>storage-endpoint-suffix</key>
+                    <value>dfs.core.windows.net</value>
+                </entry>
+                <entry>
+                    <key>storage-account-key</key>
+                </entry>
+                <entry>
+                    <key>storage-sas-token</key>
+                </entry>
+                <entry>
+                    <key>storage-use-managed-identity</key>
+                    <value>false</value>
+                </entry>
+                <entry>
+                    <key>managed-identity-client-id</key>
+                </entry>
+                <entry>
+                    <key>service-principal-tenant-id</key>
+                </entry>
+                <entry>
+                    <key>service-principal-client-id</key>
+                </entry>
+                <entry>
+                    <key>service-principal-client-secret</key>
+                </entry>
+            </properties>
+            <state>ENABLED</state>
+            <type>org.apache.nifi.services.azure.storage.ADLSCredentialsControllerService</type>
+        </controllerServices>
+        <processGroups>
+            <id>743487b5-663a-3060-0000-000000000000</id>
+            <parentGroupId>52217c7e-3f95-3ebb-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>0.0</y>
+            </position>
+            <comments></comments>
+            <contents>
+                <connections>
+                    <id>6b8991d0-b4e5-3d6b-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                    <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+                    <destination>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>6ba181a0-705a-347d-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                    </destination>
+                    <flowFileExpiration>0 sec</flowFileExpiration>
+                    <labelIndex>1</labelIndex>
+                    <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+                    <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+                    <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+                    <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+                    <name></name>
+                    <selectedRelationships>success</selectedRelationships>
+                    <source>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>690bfa88-89f7-3e8b-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                        <versionedComponentId>690bfa88-89f7-3e8b-bc53-b6f70ba8afb7</versionedComponentId>
+                    </source>
+                    <zIndex>0</zIndex>
+                </connections>
+                <connections>
+                    <id>9bc75180-3210-3f9c-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                    <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+                    <destination>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>2b9e713b-4325-3f2f-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                    </destination>
+                    <flowFileExpiration>0 sec</flowFileExpiration>
+                    <labelIndex>1</labelIndex>
+                    <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+                    <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+                    <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+                    <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+                    <name></name>
+                    <selectedRelationships>split</selectedRelationships>
+                    <source>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>6ba181a0-705a-347d-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                    </source>
+                    <zIndex>0</zIndex>
+                </connections>
+                <connections>
+                    <id>d753eced-0b00-3104-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                    <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+                    <destination>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>f7f7e059-19ec-3dbb-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                        <versionedComponentId>f7f7e059-19ec-3dbb-b461-61980a34ad5d</versionedComponentId>
+                    </destination>
+                    <flowFileExpiration>0 sec</flowFileExpiration>
+                    <labelIndex>1</labelIndex>
+                    <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+                    <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+                    <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+                    <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+                    <name></name>
+                    <selectedRelationships>split</selectedRelationships>
+                    <source>
+                        <groupId>743487b5-663a-3060-0000-000000000000</groupId>
+                        <id>2b9e713b-4325-3f2f-0000-000000000000</id>
+                        <type>PROCESSOR</type>
+                    </source>
+                    <zIndex>0</zIndex>
+                </connections>
+                <processors>
+                    <id>2b9e713b-4325-3f2f-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>816.0</x>
+                        <y>488.0</y>
+                    </position>
+                    <bundle>
+                        <artifact>nifi-standard-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.18.0</version>
+                    </bundle>
+                    <config>
+                        <backoffMechanism>PENALIZE_FLOWFILE</backoffMechanism>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>JsonPath Expression</key>
+<value>
+    <name>JsonPath Expression</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Null Value Representation</key>
+<value>
+    <name>Null Value Representation</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>ALL</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <maxBackoffPeriod>10 mins</maxBackoffPeriod>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>JsonPath Expression</key>
+<value>$.*</value>
+                            </entry>
+                            <entry>
+<key>Null Value Representation</key>
+<value>empty string</value>
+                            </entry>
+                        </properties>
+                        <retryCount>10</retryCount>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>false</executionNodeRestricted>
+                    <name>Edita o JSON deixando só chave e valor</name>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>failure</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>original</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <relationships>
+                        <autoTerminate>false</autoTerminate>
+                        <name>split</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <state>RUNNING</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.standard.SplitJson</type>
+                </processors>
+                <processors>
+                    <id>690bfa88-89f7-3e8b-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>816.0</x>
+                        <y>104.0</y>
+                    </position>
+                    <versionedComponentId>690bfa88-89f7-3e8b-bc53-b6f70ba8afb7</versionedComponentId>
+                    <bundle>
+                        <artifact>nifi-social-media-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.18.0</version>
+                    </bundle>
+                    <config>
+                        <backoffMechanism>PENALIZE_FLOWFILE</backoffMechanism>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>stream-endpoint</key>
+<value>
+    <name>stream-endpoint</name>
+</value>
+                            </entry>
+                            <entry>
+<key>base-path</key>
+<value>
+    <name>base-path</name>
+</value>
+                            </entry>
+                            <entry>
+<key>bearer-token</key>
+<value>
+    <name>bearer-token</name>
+</value>
+                            </entry>
+                            <entry>
+<key>queue-size</key>
+<value>
+    <name>queue-size</name>
+</value>
+                            </entry>
+                            <entry>
+<key>batch-size</key>
+<value>
+    <name>batch-size</name>
+</value>
+                            </entry>
+                            <entry>
+<key>backoff-attempts</key>
+<value>
+    <name>backoff-attempts</name>
+</value>
+                            </entry>
+                            <entry>
+<key>backoff-time</key>
+<value>
+    <name>backoff-time</name>
+</value>
+                            </entry>
+                            <entry>
+<key>maximum-backoff-time</key>
+<value>
+    <name>maximum-backoff-time</name>
+</value>
+                            </entry>
+                            <entry>
+<key>connect-timeout</key>
+<value>
+    <name>connect-timeout</name>
+</value>
+                            </entry>
+                            <entry>
+<key>read-timeout</key>
+<value>
+    <name>read-timeout</name>
+</value>
+                            </entry>
+                            <entry>
+<key>backfill-minutes</key>
+<value>
+    <name>backfill-minutes</name>
+</value>
+                            </entry>
+                            <entry>
+<key>tweet-fields</key>
+<value>
+    <name>tweet-fields</name>
+</value>
+                            </entry>
+                            <entry>
+<key>user-fields</key>
+<value>
+    <name>user-fields</name>
+</value>
+                            </entry>
+                            <entry>
+<key>media-fields</key>
+<value>
+    <name>media-fields</name>
+</value>
+                            </entry>
+                            <entry>
+<key>poll-fields</key>
+<value>
+    <name>poll-fields</name>
+</value>
+                            </entry>
+                            <entry>
+<key>place-fields</key>
+<value>
+    <name>place-fields</name>
+</value>
+                            </entry>
+                            <entry>
+<key>expansions</key>
+<value>
+    <name>expansions</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>PRIMARY</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <maxBackoffPeriod>10 mins</maxBackoffPeriod>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>stream-endpoint</key>
+<value>Sample Endpoint</value>
+                            </entry>
+                            <entry>
+<key>base-path</key>
+<value>https://api.twitter.com</value>
+                            </entry>
+                            <entry>
+<key>bearer-token</key>
+                            </entry>
+                            <entry>
+<key>queue-size</key>
+<value>10000</value>
+                            </entry>
+                            <entry>
+<key>batch-size</key>
+<value>1000</value>
+                            </entry>
+                            <entry>
+<key>backoff-attempts</key>
+<value>5</value>
+                            </entry>
+                            <entry>
+<key>backoff-time</key>
+<value>1 mins</value>
+                            </entry>
+                            <entry>
+<key>maximum-backoff-time</key>
+<value>5 mins</value>
+                            </entry>
+                            <entry>
+<key>connect-timeout</key>
+<value>10 secs</value>
+                            </entry>
+                            <entry>
+<key>read-timeout</key>
+<value>10 secs</value>
+                            </entry>
+                            <entry>
+<key>backfill-minutes</key>
+<value>0</value>
+                            </entry>
+                            <entry>
+<key>tweet-fields</key>
+<value>created_at,lang</value>
+                            </entry>
+                            <entry>
+<key>user-fields</key>
+<value>id,location,name</value>
+                            </entry>
+                            <entry>
+<key>media-fields</key>
+                            </entry>
+                            <entry>
+<key>poll-fields</key>
+                            </entry>
+                            <entry>
+<key>place-fields</key>
+<value>country,country_code</value>
+                            </entry>
+                            <entry>
+<key>expansions</key>
+                            </entry>
+                        </properties>
+                        <retryCount>10</retryCount>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>true</executionNodeRestricted>
+                    <name>Pega dados aleatórios do Twitter</name>
+                    <relationships>
+                        <autoTerminate>false</autoTerminate>
+                        <name>success</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <state>STOPPED</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.twitter.ConsumeTwitter</type>
+                </processors>
+                <processors>
+                    <id>6ba181a0-705a-347d-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>816.0</x>
+                        <y>296.0</y>
+                    </position>
+                    <bundle>
+                        <artifact>nifi-standard-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.18.0</version>
+                    </bundle>
+                    <config>
+                        <backoffMechanism>PENALIZE_FLOWFILE</backoffMechanism>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>JsonPath Expression</key>
+<value>
+    <name>JsonPath Expression</name>
+</value>
+                            </entry>
+                            <entry>
+<key>Null Value Representation</key>
+<value>
+    <name>Null Value Representation</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>ALL</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <maxBackoffPeriod>10 mins</maxBackoffPeriod>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>JsonPath Expression</key>
+<value>$.*</value>
+                            </entry>
+                            <entry>
+<key>Null Value Representation</key>
+<value>empty string</value>
+                            </entry>
+                        </properties>
+                        <retryCount>10</retryCount>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>false</executionNodeRestricted>
+                    <name>Quebra o dicionário em JSON</name>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>failure</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>original</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <relationships>
+                        <autoTerminate>false</autoTerminate>
+                        <name>split</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <state>RUNNING</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.standard.SplitJson</type>
+                </processors>
+                <processors>
+                    <id>f7f7e059-19ec-3dbb-0000-000000000000</id>
+                    <parentGroupId>743487b5-663a-3060-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>816.0</x>
+                        <y>696.0</y>
+                    </position>
+                    <versionedComponentId>f7f7e059-19ec-3dbb-b461-61980a34ad5d</versionedComponentId>
+                    <bundle>
+                        <artifact>nifi-azure-nar</artifact>
+                        <group>org.apache.nifi</group>
+                        <version>1.18.0</version>
+                    </bundle>
+                    <config>
+                        <backoffMechanism>PENALIZE_FLOWFILE</backoffMechanism>
+                        <bulletinLevel>WARN</bulletinLevel>
+                        <comments></comments>
+                        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                        <descriptors>
+                            <entry>
+<key>adls-credentials-service</key>
+<value>
+    <identifiesControllerService>org.apache.nifi.services.azure.storage.ADLSCredentialsService</identifiesControllerService>
+    <name>adls-credentials-service</name>
+</value>
+                            </entry>
+                            <entry>
+<key>filesystem-name</key>
+<value>
+    <name>filesystem-name</name>
+</value>
+                            </entry>
+                            <entry>
+<key>directory-name</key>
+<value>
+    <name>directory-name</name>
+</value>
+                            </entry>
+                            <entry>
+<key>file-name</key>
+<value>
+    <name>file-name</name>
+</value>
+                            </entry>
+                            <entry>
+<key>base-temporary-path</key>
+<value>
+    <name>base-temporary-path</name>
+</value>
+                            </entry>
+                            <entry>
+<key>conflict-resolution-strategy</key>
+<value>
+    <name>conflict-resolution-strategy</name>
+</value>
+                            </entry>
+                            <entry>
+<key>proxy-configuration-service</key>
+<value>
+    <identifiesControllerService>org.apache.nifi.proxy.ProxyConfigurationService</identifiesControllerService>
+    <name>proxy-configuration-service</name>
+</value>
+                            </entry>
+                        </descriptors>
+                        <executionNode>ALL</executionNode>
+                        <lossTolerant>false</lossTolerant>
+                        <maxBackoffPeriod>10 mins</maxBackoffPeriod>
+                        <penaltyDuration>30 sec</penaltyDuration>
+                        <properties>
+                            <entry>
+<key>adls-credentials-service</key>
+<value>4fb1a18f-ecdd-3474-0000-000000000000</value>
+                            </entry>
+                            <entry>
+<key>filesystem-name</key>
+<value>dados</value>
+                            </entry>
+                            <entry>
+<key>directory-name</key>
+<value>pasta1/twitter</value>
+                            </entry>
+                            <entry>
+<key>file-name</key>
+<value>twitter_${nextInt()}.json</value>
+                            </entry>
+                            <entry>
+<key>base-temporary-path</key>
+<value></value>
+                            </entry>
+                            <entry>
+<key>conflict-resolution-strategy</key>
+<value>fail</value>
+                            </entry>
+                            <entry>
+<key>proxy-configuration-service</key>
+                            </entry>
+                        </properties>
+                        <retryCount>10</retryCount>
+                        <runDurationMillis>0</runDurationMillis>
+                        <schedulingPeriod>0 sec</schedulingPeriod>
+                        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                        <yieldDuration>1 sec</yieldDuration>
+                    </config>
+                    <executionNodeRestricted>false</executionNodeRestricted>
+                    <name>Coloca dados no ADLS Azure</name>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>failure</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <relationships>
+                        <autoTerminate>true</autoTerminate>
+                        <name>success</name>
+                        <retry>false</retry>
+                    </relationships>
+                    <state>RUNNING</state>
+                    <style/>
+                    <type>org.apache.nifi.processors.azure.storage.PutAzureDataLakeStorage</type>
+                </processors>
+            </contents>
+            <defaultBackPressureDataSizeThreshold>1 GB</defaultBackPressureDataSizeThreshold>
+            <defaultBackPressureObjectThreshold>10000</defaultBackPressureObjectThreshold>
+            <defaultFlowFileExpiration>0 sec</defaultFlowFileExpiration>
+            <flowfileConcurrency>UNBOUNDED</flowfileConcurrency>
+            <flowfileOutboundPolicy>STREAM_WHEN_AVAILABLE</flowfileOutboundPolicy>
+            <name>Flow Twitter</name>
+            <variables/>
+        </processGroups>
+    </snippet>
+    <timestamp>12/02/2022 18:07:13 UTC</timestamp>
+</template>
